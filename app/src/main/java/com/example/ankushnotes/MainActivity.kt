@@ -10,12 +10,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ankushnotes.databinding.ActivityMainBinding
 
  class MainActivity : AppCompatActivity(), INotesRVAdaper {
 
     lateinit var viewModel: NoteViewModel
 
      override fun onCreate(savedInstanceState: Bundle?) {
+//        val binding=ActivityMainBinding.inflate(layoutInflater)
+//         val view=
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,7 +31,7 @@ import androidx.recyclerview.widget.RecyclerView
         viewModel = ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(NoteViewModel::class.java)
         viewModel.allnotes.observe(this, Observer{ list->
             list?.let {
-                adapter.onUpdateList(it) }
+                adapter.submitList(it) }
         })
         recyclerView.layoutManager=LinearLayoutManager(this)
 
