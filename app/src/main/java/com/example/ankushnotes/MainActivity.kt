@@ -1,20 +1,17 @@
  package com.example.ankushnotes
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ankushnotes.databinding.ActivityMainBinding
 
  class MainActivity : AppCompatActivity(), INotesRVAdaper {
 
-    lateinit var viewModel: NoteViewModel
+     private lateinit var viewModel: NoteViewModel
 
      override fun onCreate(savedInstanceState: Bundle?) {
 //        val binding=ActivityMainBinding.inflate(layoutInflater)
@@ -29,10 +26,11 @@ import com.example.ankushnotes.databinding.ActivityMainBinding
         recyclerView.adapter=adapter
 
         viewModel = ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(NoteViewModel::class.java)
-        viewModel.allnotes.observe(this, Observer{ list->
-            list?.let {
-                adapter.submitList(it) }
-        })
+         viewModel.allnotes.observe(this, { list ->
+             list?.let {
+                 adapter.submitList(it)
+             }
+         })
         recyclerView.layoutManager=LinearLayoutManager(this)
 
     }
@@ -49,6 +47,7 @@ import com.example.ankushnotes.databinding.ActivityMainBinding
              Toast.makeText(this , "Empty Note", Toast.LENGTH_SHORT).show()
          }
          else{
+             input.setText("")
              viewModel.insertNote(Note(noteText))
          }
      }

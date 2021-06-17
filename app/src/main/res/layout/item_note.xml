@@ -10,9 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:background="@color/design_default_color_primary_variant"
+        android:background="@color/purple_700"
         android:padding="5dp"
-        android:textSize="20dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/white"
+        android:textSize="25sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,7 +25,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:flow_verticalAlign="center"
         android:src="@drawable/ic_baseline_cancel_24"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@id/DisplayNotetextView"
+        app:layout_constraintTop_toTopOf="@id/DisplayNotetextView" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/DisplayNotetextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
